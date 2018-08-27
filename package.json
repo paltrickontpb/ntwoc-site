@@ -1,0 +1,15 @@
+{
+  "name": "next-tech-woc",
+  "version": "1.0.0",
+  "description": "Winter of Code is an event to proliferate open-source projects and chances.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Paltrickontpb",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
