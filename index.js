@@ -42,7 +42,8 @@ app.get('/api', function(req, res){
 });
 
 app.post('/api/register', (req,res)=>{
-    res.json('To be filled')
+    pushDetails(req.body.user, req.body.name, req.body.info, req.body.abstract, req.body.misc);
+    res.json('Data Uploaded');
 })
 
 app.get('*', function(req, res){
