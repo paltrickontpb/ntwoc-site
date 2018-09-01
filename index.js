@@ -9,17 +9,18 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-function pushDetails(_user, _name, _info, _abstract, _misc) {
+function pushDetails(_user, _obj) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db(dbName);
-        var myobj = { 
-            name: _name, 
-            info: _info, 
-            abstract: _abstract,
-            misc: _misc
-        };
-        dbo.collection(_user).insertOne(myobj, function(err, res) {
+        var myobj = _obj;
+        if (_user = 'Mentor'){
+            var user = "mentor";
+        } else {
+            var user = "student"
+        }
+
+        dbo.collection(user).insertOne(myobj, function(err, res) {
           if (err) throw err;
           console.log("1 document inserted");
           db.close();
@@ -44,7 +45,11 @@ app.get('/api', function(req, res){
 });
 
 app.post('/api/register', (req,res)=>{
-    pushDetails(req.body.user, req.body.name, req.body.info, req.body.abstract, req.body.drive);
+    var reqdata = req.body;
+    console.log(req.body.user);
+    delete reqdata['user'];
+    console.log(reqdata);
+    pushDetails(req.body.user, reqdata);
     res.json('Data Uploaded');
 })
 

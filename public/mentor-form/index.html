@@ -196,6 +196,8 @@
 	<script src="js/main.js"></script>
 
 	<script>
+		var flag = 0;
+
 		function dataPush(){
 			var _name = ($('#fname').val());
 			var _mail = ($('#mail').val());
@@ -213,9 +215,21 @@
 				abstract : _abstract,
 				drive : _drive
 			}
+			if (flag=0){
+				$.post("/api/register",jsonObject, (data, status) => {
+					console.log("Data: " + data + "\nStatus: " + status);
+					alert('Form Submitted.');
 
-			
-			
+					$('#fname').val() = ""
+					$('#mail').val() = ""
+					$('#git').val() = ""
+					$('#abstract').val() = ""
+					$('#drive').val() = ""
+    				});
+				} else {
+					alert('Enter all Information');
+					flag = 0;
+				}
 		}
 	</script>
 </body>
