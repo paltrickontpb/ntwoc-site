@@ -36,6 +36,8 @@ app.use(function(req, res, next) {
   });
 
 app.use('/', express.static('public'))
+app.use('/student-form', express.static('public/student-form'))
+app.use('/mentor-form', express.static('public/mentor-form'))
 
 app.get('/api', function(req, res){
    res.send("Hello world!");
