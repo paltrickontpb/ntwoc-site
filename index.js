@@ -44,7 +44,7 @@ app.get('/api', function(req, res){
 });
 
 app.post('/api/register', (req,res)=>{
-    pushDetails(req.body.user, req.body.name, req.body.info, req.body.abstract, req.body.misc);
+    pushDetails(req.body.user, req.body.name, req.body.info, req.body.abstract, req.body.drive);
     res.json('Data Uploaded');
 })
 
