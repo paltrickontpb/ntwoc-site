@@ -43,7 +43,7 @@ app.use('/mentor-doc', express.static('public/woc-docs/mentor-guide.pdf'))
 app.use('/student-doc', express.static('public/woc-docs/student-guide.pdf'))
 
 app.get('/api', function(req, res){
-   res.send("Hello world!");
+   res.send("API is not available");
 });
 
 app.post('/api/register', (req,res)=>{
