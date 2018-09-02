@@ -215,7 +215,6 @@
 				abstract : _abstract,
 				drive : _drive
 			}
-			if (flag=0){
 				$.post("/api/register",jsonObject, (data, status) => {
 					console.log("Data: " + data + "\nStatus: " + status);
 					alert('Form Submitted.');
@@ -226,10 +225,7 @@
 					$('#abstract').val() = ""
 					$('#drive').val() = ""
     				});
-				} else {
-					alert('Enter all Information');
-					flag = 0;
-				}
+				
 		}
 	</script>
 </body>
