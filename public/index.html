@@ -120,16 +120,16 @@
 					<h2>Contact Us</h2>
 					<p>We entertain all questions, pertaining to Next-Tech Winter of Code.</p>
 				</header>
-				<form method="post" action="#">
+				<form method="post" action="/api/reply">
 					<div class="row gtr-50">
-						<div class="col-6 col-12-mobile"><input type="text" class="text" name="name" placeholder="Name" /></div>
-						<div class="col-6 col-12-mobile"><input type="text" class="text" name="email" placeholder="Email" /></div>
+						<div class="col-6 col-12-mobile"><input type="text" id="name" class="text" name="name" placeholder="Name" /></div>
+						<div class="col-6 col-12-mobile"><input type="text" id="email" class="text" name="email" placeholder="Email" /></div>
 						<div class="col-12">
-							<textarea name="message" placeholder="Message"></textarea>
+							<textarea id="text" name="message" placeholder="Message"></textarea>
 						</div>
 						<div class="col-12">
 							<ul class="actions">
-								<li><input type="submit" value="Send Message" /></li>
+								<li><input type="submit" value="Send Message" onClick="alertMe()"/></li>
 							</ul>
 						</div>
 					</div>
@@ -287,12 +287,9 @@
 
 		<section id="footer">
 			<ul class="icons">
-				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-				<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
-				<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-				<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+				<li><a href="twitter.com/nexttechlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="https://www.facebook.com/NextTechSRM/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+				<li><a href="https://www.linkedin.com/company/next-tech-lab/" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
 			</ul>
 			<div class="copyright">
 				<ul class="menu">
@@ -309,6 +306,11 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function alertMe(){
+					alert("Thanks for Reaching out to us! Your response has been saved");
+				}
+			</script>
 
 	</body>
 </html>

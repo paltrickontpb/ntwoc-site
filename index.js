@@ -16,8 +16,12 @@ function pushDetails(_user, _obj) {
         var myobj = _obj;
         if (_user = 'Mentor'){
             var user = "mentor";
-        } else {
+        } else if (_user = 'Student') {
             var user = "student"
+        } else if (_user = 'Reply') {
+            var user = "reachout"
+        } else {
+            var user = "reachout"
         }
 
         dbo.collection(user).insertOne(myobj, function(err, res) {
@@ -43,7 +47,7 @@ app.use('/mentor-doc', express.static('public/woc-docs/mentor-guide.pdf'))
 app.use('/student-doc', express.static('public/woc-docs/student-guide.pdf'))
 
 app.get('/api', function(req, res){
-   res.send("API is not available");
+   res.send("API is not available openly");
 });
 
 app.post('/api/register', (req,res)=>{
@@ -53,6 +57,11 @@ app.post('/api/register', (req,res)=>{
     console.log(reqdata);
     pushDetails(req.body.user, reqdata);
     res.json('Data Uploaded');
+})
+
+app.post('/api/reply', (req,res)=>{
+    pushDetails("reachout", req.body);
+    res.redirect('/')
 })
 
 app.get('*', function(req, res){
