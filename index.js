@@ -60,7 +60,17 @@ app.post('/api/register', (req,res)=>{
 })
 
 app.post('/api/reply', (req,res)=>{
-    pushDetails("reachout", req.body);
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db(dbName);
+        var myobj = req.body;
+        var user = "reachout";
+        dbo.collection(user).insertOne(myobj, function(err, res) {
+          if (err) throw err;
+          console.log("1 document inserted");
+          db.close();
+        });
+      });
     res.redirect('/')
 })
 
