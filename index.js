@@ -74,6 +74,10 @@ app.post('/api/reply', (req,res)=>{
     res.redirect('/')
 })
 
+app.get('/projects', (req,res)=>{
+    res.send("Be Patient, We will update the project list soon !!");
+})
+
 app.get('*', function(req, res){
     res.send("Error 404");
  });

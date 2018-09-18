@@ -217,13 +217,14 @@
 			}
 				$.post("/api/register",jsonObject, (data, status) => {
 					console.log("Data: " + data + "\nStatus: " + status);
-					alert('Form Submitted.');
-
+					alert('Form Submitted. Thank You for applying as a mentor.');
+					window.location = "/";
+					/*
 					$('#fname').val() = ""
 					$('#mail').val() = ""
 					$('#git').val() = ""
 					$('#abstract').val() = ""
-					$('#drive').val() = ""
+					$('#drive').val() = "" */
     				});
 				
 		}
