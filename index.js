@@ -4,6 +4,7 @@ var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://sam:adminsam123@ds235302.mlab.com:35302/ntwoc";
 var dbName = "ntwoc"
+var accData = [];
 
 var bodyParser = require('body-parser')
 app.use(bodyParser.json());
@@ -74,9 +75,35 @@ app.post('/api/reply', (req,res)=>{
     res.redirect('/')
 })
 
-app.get('/projects', (req,res)=>{
-    res.send("Be Patient, We will update the project list soon !!");
+app.get('/api/projectdata', (req,res)=> {
+    res.json(accData);
 })
+
+app.get('/api/dataupdate', (req,res)=>{
+    mongoDataPull();
+    res.send('Updated');
+})
+
+function mongoDataPull(){
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db(dbName);
+        const cursor = dbo.collection("accepted").find({});
+        accData = [];
+        function iterateFunc(doc) {
+            //accData.push(JSON.stringify(doc, null, 4));
+            accData.push(doc);
+            console.log('Data Acquisition Done')
+         }
+         
+         function errorFunc(error) {
+            console.log(error);
+         }
+         
+         cursor.forEach(iterateFunc, errorFunc);
+
+    });
+}
 
 app.get('*', function(req, res){
     res.send("Error 404");
