@@ -51,10 +51,6 @@ app.get('/api', function(req, res){
    res.send("API is not available openly");
 });
 
-app.get('/projects', function(req, res){
-    res.send("Will be updated soon.");
- });
-
 app.post('/api/register', (req,res)=>{
     var reqdata = req.body;
     console.log(req.body.user);
